@@ -6,7 +6,7 @@ the map should contain at most 2^history-reg-size
 we shift the contents of the history register adding the value of the branch
 and a tournament branch Predictor
 //explain
-in the corelated 2bit branch Predictor we found that if we increased the length of the history register the hit rate would drop
+in the corelated 2bit branch Predictor we found that the size of history register should be 3 for optimum perdiction to this trace
 author Ahmed Elzeny _ Ahmed Abdallah
 
 */
@@ -22,13 +22,13 @@ long regHis = 0;
 int wrongCount=0, rightCount=0;
 
 //a function that maintains the history register
-//we can set it's length as we like let it be 2
+//we can set it's length as we like let it be 3
 void updateReg(bool taken){
     regHis*=2;
     if(taken)
         regHis+=1;
-    if(regHis>=4)
-        regHis-=4;
+    if(regHis>=8)
+        regHis-=8;
 }
 
 
@@ -46,7 +46,7 @@ int main()
             //prediction is not take
             if(stat==0||stat==1){
                 //we were right
-                if(b=0){
+                if(b==0){
                     rightCount++;
                     //update map to 0;
                     prediction.find(dum)->second=0;
@@ -62,7 +62,7 @@ int main()
             //prediction is to take
             }else{
                 //we were right
-                if(b=1){
+                if(b==1){
                     rightCount++;
                     //update map to 3;
                     prediction.find(dum)->second=3;

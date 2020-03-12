@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1584032738 source:/home/zeny/Documents/projects/predictor/main.cpp
+	<bits/stdc++.h>
+	<fstream>
+	<map>
+

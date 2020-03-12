@@ -52,7 +52,7 @@ void updateReg(bool taken) {
 
 
 void gshareit(long long int a, int b) {
-    long long int dum = b ^regHis;
+    long long int dum = (a % 100000) ^regHis;
     if (gshare.count(dum) > 0) {
         int stat = gshare.find(dum)->second;
         //gshare is not taken
